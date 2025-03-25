@@ -32,8 +32,9 @@ workflow PROTEINANNOTATOR {
 
     FUNCTIONAL_ANNOTATION (
         ch_samplesheet
+    
     //
-    // MODULE: Run FastQC
+    // MODULE: Run InterProScan
     //
     INTERPROSCAN (
         ch_samplesheet, 
