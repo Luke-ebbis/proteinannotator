@@ -32,7 +32,6 @@ workflow PROTEINANNOTATOR {
         ch_samplesheet, 
         [file(params.interproscan_database, checkIfExists: true), params.interproscan_database_version],
     )
-    ch_multiqc_files = ch_multiqc_files.mix(INTERPROSCAN.out.zip.collect{it[1]})
     ch_versions = ch_versions.mix(INTERPROSCAN.out.versions.first())
 
     //
