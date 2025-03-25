@@ -24,8 +24,9 @@ workflow PROTEINANNOTATOR {
 
     ch_versions = Channel.empty()
     ch_multiqc_files = Channel.empty()
+    
     //
-    // MODULE: Run FastQC
+    // MODULE: Run InterProScan
     //
     INTERPROSCAN (
         ch_samplesheet, 
