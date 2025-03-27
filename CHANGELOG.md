@@ -9,7 +9,7 @@ Initial release of nf-core/proteinannotator, created with the [nf-core](https://
 
 ### `Added`
 
-- @tntly Added Unifire module ([#17](https://github.com/nf-core/proteinannotator/pull/17))
+- [@tntly](https://github.com/tntly) Added Unifire module ([#17](https://github.com/nf-core/proteinannotator/pull/17))
 
 ### `Fixed`
 
