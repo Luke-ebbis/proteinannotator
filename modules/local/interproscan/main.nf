@@ -1,6 +1,6 @@
 process INTERPROSCAN {
     scratch true
-    tag "$meta.id"
+    tag "${meta.id}"
     label 'process_high'
 
     conda "${moduleDir}/environment.yml"
@@ -8,7 +8,8 @@ process INTERPROSCAN {
     containerOptions {
         if (workflow.containerEngine in ['singularity', 'apptainer']) {
             return "--bind data:/opt/interproscan/data"
-        } else {
+        }
+        else {
             return '-v ./data:/opt/interproscan/data'
         }
     }
@@ -18,11 +19,11 @@ process INTERPROSCAN {
     tuple path(interproscan_db, stageAs: "data"), val(db_version)
 
     output:
-    tuple val(meta), path('*.tsv.gz') , emit: tsv
-    tuple val(meta), path('*.xml.gz') , emit: xml
+    tuple val(meta), path('*.tsv.gz'), emit: tsv
+    tuple val(meta), path('*.xml.gz'), emit: xml
     tuple val(meta), path('*.gff3.gz'), emit: gff3
     tuple val(meta), path('*.json.gz'), emit: json
-    path "versions.yml"               , emit: versions
+    path "versions.yml", emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -40,12 +41,12 @@ process INTERPROSCAN {
     export INTERPROSCAN_CONF=interproscan.properties
 
     ls -lha
-    echo interproscan_db "$interproscan_db"
-    ls -lha $interproscan_db
+    echo interproscan_db "${interproscan_db}"
+    ls -lha ${interproscan_db}
     interproscan.sh \\
         --verbose \\
-        -cpu $task.cpus \\
-        -i $fasta \\
+        -cpu ${task.cpus} \\
+        -i ${fasta} \\
         -dp \\
         ${args} \\
         --output-file-base ${prefix}
@@ -55,7 +56,7 @@ process INTERPROSCAN {
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         InterProScan: \$(interproscan.sh --version | grep -o "InterProScan version [0-9.-]*" | sed "s/InterProScan version //")
-        InterProScan database: $db_version
+        InterProScan database: ${db_version}
     END_VERSIONS
     """
 
@@ -68,7 +69,7 @@ process INTERPROSCAN {
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         InterProScan: \$(interproscan.sh --version | grep -o "InterProScan version [0-9.-]*" | sed "s/InterProScan version //")
-        InterProScan database: $db_version
+        InterProScan database: ${db_version}
     END_VERSIONS
     """
 }
