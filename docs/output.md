@@ -13,7 +13,7 @@ The directories listed below will be created in the results directory after the 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
-- [SeqKit stats](#seqkit_satats) - Simple statistics for protein FASTA files
+- [SeqKit stats](#seqkit_stats) - Simple statistics for protein FASTA files
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
 
 ### MultiQC
