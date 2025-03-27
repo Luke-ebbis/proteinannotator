@@ -7,9 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release of nf-core/proteinannotator, created with the [nf-core](https://nf-co.re/) template.
 
+### Credits
+
+Special thanks to the following for their contributions to the release:
+
+- [Tien Ly](https://github.com/tntly)
+
 ### `Added`
 
-- [@tntly](https://github.com/tntly) Added Unifire module ([#17](https://github.com/nf-core/proteinannotator/pull/17))
+- [[PR #17](https://github.com/nf-core/proteinannotator/pull/17)] Added Unifire module
 
 ### `Fixed`
 
