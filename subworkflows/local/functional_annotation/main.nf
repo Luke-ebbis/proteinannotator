@@ -1,3 +1,6 @@
+include { UNIFIRE                } from '../../../modules/local/unifire/main'
+
+
 workflow FUNCTIONAL_ANNOTATION {
 
     take:
@@ -7,11 +10,16 @@ workflow FUNCTIONAL_ANNOTATION {
 
     ch_versions = Channel.empty()
 
+    UNIFIRE ( ch_fasta )
+
+    ch_versions = ch_versions.mix( UNIFIRE.out.versions )
+
     // TODO nf-core: substitute modules here for the modules of your subworkflow
 
     emit:
-    // TODO nf-core: edit emitted channels
-
-    versions = ch_versions                     // channel: [ versions.yml ]
+    unifire_arba    = UNIFIRE.out.arba
+    unifire_unirule = UNIFIRE.out.unirule
+    unifire_pirsr   = UNIFIRE.out.pirsr
+    versions        = ch_versions                     // channel: [ versions.yml ]
 }
 
