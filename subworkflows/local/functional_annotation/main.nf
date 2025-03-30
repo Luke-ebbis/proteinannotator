@@ -1,8 +1,11 @@
 // Import Annotator Subworfklows
-include { INTERPROSCAN                } from '../interproscan/main'
+include { INTERPROSCAN } from '../interproscan/main'
+
+include { INTERPROSCAN } from '../../../modules/local/interproscan/main'
+
+
 
 workflow FUNCTIONAL_ANNOTATION {
-
     take:
     ch_fasta // channel: [ val(meta), [ fasta ] ]
 
@@ -14,11 +17,10 @@ workflow FUNCTIONAL_ANNOTATION {
 
     // Create a multifasta, with one fasta per entry, add the sequence ID to the meta id
     ch_fasta
-        .map {
-            meta, fasta ->
+        .map { meta, fasta ->
             [
-                [id:"${meta.id}_${fasta.splitFasta(record: [id: true]).id[0].replaceAll(/\|/, '-')}"] ,
-                fasta.splitFasta(file:true)
+                [id: "${meta.id}_${fasta.splitFasta(record: [id: true]).id[0].replaceAll(/\|/, '-')}"],
+                fasta.splitFasta(file: true),
             ]
         }
         .transpose()
@@ -28,13 +30,11 @@ workflow FUNCTIONAL_ANNOTATION {
     // SUBWORKFLOW: Run InterProScan
     //
 
-    INTERPROSCAN (
-        ch_multifasta,
+    INTERPROSCAN(
+        ch_multifasta
     )
     ch_versions = ch_versions.mix(INTERPROSCAN.out.versions.first())
 
     emit:
-    // TODO nf-core: edit emitted channels
-
-    versions = ch_versions                     // channel: [ versions.yml ]
+    versions = ch_versions // channel: [ versions.yml ]
 }
