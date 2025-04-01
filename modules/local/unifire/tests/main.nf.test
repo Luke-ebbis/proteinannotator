@@ -18,7 +18,7 @@ nextflow_process {
                 """
                 input[0] = Channel.from([
                     [ id:'test1' ], // meta
-                    [file(params.modules_testdata_base_path + 'proteomics/database/UP000005640_9606.fasta', checkIfExists: true)], // fastqs
+                    [file(params.modules_testdata_base_path + 'kmerseek/reference/snap25_isoforms_human_P60880.fasta', checkIfExists: true)], // fastas
                     1 // seq_count
                 ])
                 """
