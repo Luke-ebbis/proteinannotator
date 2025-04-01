@@ -13,11 +13,25 @@ workflow FUNCTIONAL_ANNOTATION {
 
     // TODO nf-core: substitute modules here for the modules of your subworkflow
 
+    // Create a multifasta, with one fasta per entry, add the sequence ID to the meta id
+    ch_fasta
+        .map {
+            meta, fasta ->
+            [
+                [id:"${meta.id}_${fasta[0].splitFasta(record: [id: true]).id[0].replaceAll(/\|/, '-')}"] ,
+                fasta[0].splitFasta(file:true)
+            ]
+        }
+        .transpose()
+        .view()
+        .set { ch_multifasta }
+
     //
     // MODULE: Run InterProScan
     //
+
     INTERPROSCAN (
-        ch_fasta,
+        ch_multifasta,
         [file(params.interproscan_database, checkIfExists: true), params.interproscan_database_version],
     )
     ch_versions = ch_versions.mix(INTERPROSCAN.out.versions.first())
