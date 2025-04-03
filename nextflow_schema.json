@@ -43,6 +43,26 @@
                 }
             }
         },
+        "interproscan_options": {
+            "title": "InterProScan Options",
+            "type": "object",
+            "description": "Options for best-practices domain annotation tool from EBI, InterProScan",
+            "default": "",
+            "properties": {
+                "interproscan_database": {
+                    "type": "string",
+                    "description": "Path to the interrproscan database, as downloaded from https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/"
+                },
+                "interproscan_database_version": {
+                    "type": "string",
+                    "description": "Version number of the InterProScan database, e.g. \"5.73-104.0\""
+                },
+                "skip_interproscan_database_setup": {
+                    "type": "boolean",
+                    "description": "If provided, skip running interproscan_setup.py, which runs `hmmpress` on HMM profiles. If you are using InterProScan data fresh off the FTP server, you will need to do this"
+                }
+            }
+        },
         "reference_genome_options": {
             "title": "Reference genome options",
             "type": "object",
@@ -233,6 +253,9 @@
             "$ref": "#/$defs/input_output_options"
         },
         {
+            "$ref": "#/$defs/interproscan_options"
+        },
+        {
             "$ref": "#/$defs/reference_genome_options"
         },
         {
@@ -241,14 +264,5 @@
         {
             "$ref": "#/$defs/generic_options"
         }
-    ],
-    "properties": {
-        "interproscan_database": {
-            "type": "string"
-        },
-        "interproscan_database_version": {
-            "type": "string",
-            "default": 5.5991
-        }
-    }
+    ]
 }
