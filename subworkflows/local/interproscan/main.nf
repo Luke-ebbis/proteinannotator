@@ -6,6 +6,7 @@
 
 include { INTERPROSCAN_SETUP   } from '../../../modules/local/interproscan/setup/main'
 include { INTERPROSCAN_RUN     } from '../../../modules/local/interproscan/run/main'
+include { UNTAR                } from '../../../modules/nf-core/untar/main'
 
 workflow INTERPROSCAN {
 
@@ -18,7 +19,8 @@ workflow INTERPROSCAN {
 
     ch_versions = Channel.empty()
 
-    if (!params.skip_interproscan_database_setup) {
+    if (params.interproscan_tar_gz){
+        interproscan_folder = UNTAR(params.interproscan_tar_gz)
         INTERPROSCAN_SETUP (
             [file(params.interproscan_database, checkIfExists: true), params.interproscan_database_version]
         )

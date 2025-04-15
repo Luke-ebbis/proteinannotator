@@ -25,14 +25,19 @@ process INTERPROSCAN_SETUP {
     // TODO nf-core: See section in main README for further information regarding finding and adding container addresses to the section below.
     conda "${moduleDir}/environment.yml"
     container "nf-core/interproscan:5.73-104.0"
+    containerOptions {
+        if (workflow.containerEngine in ['singularity', 'apptainer']) {
+            return "--bind data:/opt/interproscan/data"
+        } else {
+            return '-v ./data:/opt/interproscan/data'
+        }
+    }
 
     input:
     tuple path(interproscan_db, stageAs: "data"), val(db_version)
 
     output:
-    // TODO nf-core: Named file extensions MUST be emitted for ALL output channels
     tuple path("data/"), val(db_version)
-    // TODO nf-core: List additional required output channels/values here
     path "versions.yml"           , emit: versions
 
     when:
@@ -44,7 +49,7 @@ process INTERPROSCAN_SETUP {
     python3 \
         interproscan_setup.py \
         --force \
-        ${interproscan_db}/interproscan.properties
+        interproscan.properties
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

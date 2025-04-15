@@ -20,14 +20,12 @@ tools:
 
 ## TODO nf-core: Add a description of all of the variables used as input
 input:
-  #
-  ## TODO nf-core: Delete / customise this example input
-  - - interproscan_db:
-        ontologies:
-          - edam: http://edamontology.org/format_1929 # FASTA
+  - - interproscan_tar_gz:
         type: directory
-        description: Path to the interproscan database (untarred
-          http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/${version_major}-${version_minor}/interproscan-${version_major}-${version_minor}-64-bit.tar.gz)
+        description: |
+          Path to the interproscan database (Downloaded from:
+          http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/${version_major}-${version_minor}/interproscan-${version_major}-${version_minor}-64-bit.tar.gz,
+          e.g. https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.73-104.0/interproscan-5.73-104.0-64-bit.tar.gz)
     - db_version:
         type: string
         description: Version of the interproscan database for the versions.yml
