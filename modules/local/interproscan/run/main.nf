@@ -5,10 +5,17 @@ process INTERPROSCAN_RUN {
 
     conda "${moduleDir}/environment.yml"
     container "nf-core/interproscan:5.73-104.0"
+    containerOptions {
+        if (workflow.containerEngine in ['singularity', 'apptainer']) {
+            return "--bind data:/opt/interproscan/data"
+        } else {
+            return '-v ./data:/opt/interproscan/data'
+        }
+    }
 
     input:
     tuple val(meta), path(fasta)
-    tuple path(interproscan_db), val(db_version)
+    tuple path(interproscan_db, stageAs: "data"), val(db_version)
 
     output:
     tuple val(meta), path('*.tsv.gz') , emit: tsv
@@ -25,7 +32,11 @@ process INTERPROSCAN_RUN {
     def prefix = task.ext.prefix ?: "${meta.id}"
     // -dp (disable precalculation) is on so no online dependency
     """
+    ls -lha
+    echo interproscan_db "$interproscan_db"
+    ls -lha $interproscan_db
     interproscan.sh \\
+        --verbose \\
         -cpu $task.cpus \\
         -i $fasta \\
         -dp \\
