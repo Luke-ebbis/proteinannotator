@@ -2,6 +2,16 @@ name: nf-test CI Tests
 
 on: [push, pull_request]
 
+env:
+  # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  # renovate: datasource=github-releases depName=askimed/nf-test versioning=semver
+  NFT_VER: "0.9.2"
+  NXF_ANSI_LOG: false
+  NXF_SINGULARITY_CACHEDIR: ${{ github.workspace }}/.singularity
+  NXF_SINGULARITY_LIBRARYDIR: ${{ github.workspace }}/.singularity
+  # renovate: datasource=github-releases depName=nextflow/nextflow versioning=semver
+  NXF_VER: "24.10.2"
+
 jobs:
   test:
     runs-on: ubuntu-latest
