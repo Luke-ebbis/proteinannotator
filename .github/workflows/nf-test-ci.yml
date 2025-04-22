@@ -1,6 +1,7 @@
 name: nf-test CI Tests
-
-steps:
-  - uses: nf-core/setup-nf-test@v1
-    with:
-      install-pdiff: true
+jobs:
+  test:
+    steps:
+      - uses: nf-core/setup-nf-test@v1
+        with:
+          install-pdiff: true
