@@ -10,28 +10,28 @@ nextflow_workflow {
     tag "subworkflows_"
     tag "subworkflows/interproscan"
     // TODO nf-core: Add tags for all modules used within this subworkflow. Example:
-    tag "samtools"
-    tag "samtools/sort"
-    tag "samtools/index"
+    tag "interproscan"
+    tag "untar"
 
 
     // TODO nf-core: Change the test name preferably indicating the test-data and file-format used
-    test("sarscov2 - bam - single_end") {
+    test("interproscan -- input: tar.gz, untar") {
 
         when {
+            params {
+                interproscan_tar_gz = "${moduleTestDir}/fixtures/interproscan-5.73-104.0.tar.gz"
+                interproscan_database_version = "interproscan-5.73-104.0"
+            }
             workflow {
                 """
-                // TODO nf-core: define inputs of the workflow here. Example:
                 input[0] = [
                     [ id:'test', single_end:false ], // meta map
-                    file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExists: true),
+                    file("${projectDir}/modules/local/interproscan/run/tests/fixtures/test.fasta", checkIfExists: true)
                 ]
-                input[1] = [
-                    [ id:'genome' ],
-                    file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExists: true),
-                ]
+                println(params.interproscan_tar_gz)
+                println(input)
                 """
-            }
+        }
         }
 
         then {

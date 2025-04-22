@@ -13,21 +13,34 @@ workflow INTERPROSCAN {
     take:
     // TODO nf-core: edit input (take) channels
     ch_multifasta // channel: [ val(meta), fasta ]
-    interproscan_database // channel [ file(interproscan_database), val(interproscan_version) ]
 
     main:
 
     ch_versions = Channel.empty()
 
+    println("params.interproscan_database: ${params.interproscan_database}")
+    println("params.interproscan_tar_gz: ${params.interproscan_tar_gz}")
+    println("params.interproscan_database_version: ${params.interproscan_database_version}")
+
+    if (!params.interproscan_database_version) {
+        error("--interproscan_database_version must be provided! Exiting.")
+    }
+
     if (params.interproscan_tar_gz){
-        interproscan_folder = UNTAR(params.interproscan_tar_gz)
-        INTERPROSCAN_SETUP (
-            [file(params.interproscan_database, checkIfExists: true), params.interproscan_database_version]
-        )
-        ch_versions = ch_versions.mix(INTERPROSCAN_SETUP.out.versions.first())
-        interproscan_db = INTERPROSCAN_SETUP.out.interproscan_db
-    } else {
+        println("params.interproscan_tar_gz exists, untarring")
+        interproscan_compressed = [
+            [id: params.interproscan_database_version],
+            file(params.interproscan_tar_gz, checkIfExists: true)
+        ]
+        println("interproscan_compressed: ${interproscan_compressed}")
+        UNTAR(interproscan_compressed)
+        interproscan_db = UNTAR.out.untar
+            // Get only the "data" subfolder for proper mounting in the InterProScan
+            .map{ meta, folder -> tuple( folder.resolve('data'), params.interproscan_database_version) }
+    } else if (params.interproscan_database ) {
         interproscan_db = [file(params.interproscan_database, checkIfExists: true), params.interproscan_database_version]
+    } else {
+        error("No interproscan database provided with either --interproscan_database or --interproscan_tar_gz! Exiting.")
     }
 
     INTERPROSCAN_RUN (
