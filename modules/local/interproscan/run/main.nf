@@ -32,6 +32,13 @@ process INTERPROSCAN_RUN {
     def prefix = task.ext.prefix ?: "${meta.id}"
     // -dp (disable precalculation) is on so no online dependency
     """
+    # Find interproscan.properties to link data/ from work directory
+    INTERPROSCAN_DIR="\$( dirname "\$( dirname "\$( which interproscan.sh )" )" )"
+    INTERPROSCAN_PROPERTIES="\$( find "\$INTERPROSCAN_DIR/" -name "interproscan.properties" )"
+    cp "\$INTERPROSCAN_PROPERTIES" .
+    sed -i "/^bin\\.directory=/ s|.*|bin.directory=\$INTERPROSCAN_DIR/bin|" interproscan.properties
+    export INTERPROSCAN_CONF=interproscan.properties
+
     ls -lha
     echo interproscan_db "$interproscan_db"
     ls -lha $interproscan_db
