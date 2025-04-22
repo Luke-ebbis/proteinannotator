@@ -62,7 +62,8 @@ jobs:
             --profile=singularity \
             --tap=test.tap \
             --verbose \
-            --ci
+            --ci \
+            --tags interproscan
 
             # Save the absolute path of the test.tap file to the output
             echo "tap_file_path=$(realpath test.tap)" >> $GITHUB_OUTPUT
