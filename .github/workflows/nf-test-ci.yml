@@ -63,7 +63,7 @@ jobs:
             --tap=test.tap \
             --verbose \
             --ci \
-            --tags interproscan
+            --tag interproscan
 
             # Save the absolute path of the test.tap file to the output
             echo "tap_file_path=$(realpath test.tap)" >> $GITHUB_OUTPUT
