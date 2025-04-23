@@ -59,7 +59,7 @@ jobs:
           # NFT_DIFF_ARGS="--line-numbers --expand-tabs=2"
 
           nf-test test \
-            --profile=singularity \
+            --profile=singularity,test \
             --tap=test.tap \
             --verbose \
             --ci \
