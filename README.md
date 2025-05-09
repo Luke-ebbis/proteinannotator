@@ -36,7 +36,6 @@
 
 ![Protein annotator metromap. Protein fasta files are summarized with `seqkit stats`, then functionally annotated with InterProScan, DIAMOND-blastp, UniFire, and Kmerseek](assets/proteinannotator-metromap.excalidraw.png)
 
-
 ## Usage
 
 > [!NOTE]
