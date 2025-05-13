@@ -29,7 +29,7 @@ input:
       pattern: "*.{hmm}"
 ## TODO nf-core: List all of the channels used as output with a descriptions and their structure
 output:
-   - pressed_db:
+  - pressed_db:
       type: file
       description: |
         Pressed HMM database files ready for searching (includes .h3f, .h3i, .h3m, .h3p files)

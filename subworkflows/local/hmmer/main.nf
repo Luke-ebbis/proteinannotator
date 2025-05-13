@@ -12,17 +12,14 @@ workflow HMMER_ANNOTATION {
     take:
     ch_proteins     // channel: [ val(meta), path(fasta) ]
     ch_hmm_db      // channel: [ val(meta), path(hmm) ]
-    
     main:
     ch_versions = Channel.empty()
-    
     //
     // MODULE: Prepare HMM database with hmmpress
     //
     HMMER_HMMPRESS (
         ch_hmm_db
     )
-    
     //
     // MODULE: Run HMMER hmmsearch
     //
@@ -33,10 +30,8 @@ workflow HMMER_ANNOTATION {
         true,  // write_target
         true   // write_domain
     )
-    
     ch_versions = ch_versions.mix(HMMER_HMMPRESS.out.versions)
     ch_versions = ch_versions.mix(HMMER_HMMSEARCH.out.versions)
-    
     emit:
     pressed_db      = HMMER_HMMPRESS.out.hmm              // channel: [ val(meta), path(hmm) ]
     search_results  = HMMER_HMMSEARCH.out.output          // channel: [ val(meta), path(txt) ]

@@ -19,7 +19,6 @@ nextflow_workflow {
                         file("${projectDir}/test-datasets/proteins/test.fasta", checkIfExists: true)
                     ]
                 )
-                
                 // Create test HMM database channel (unpressed)
                 input[1] = Channel.of(
                     [
@@ -40,6 +39,3 @@ nextflow_workflow {
         }
     }
 }
-
-
-    
