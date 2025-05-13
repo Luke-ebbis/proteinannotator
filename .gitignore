@@ -12,3 +12,4 @@ null/
 .nf-test.log
 .nf-test/tests
 .nf-test-*.nf
+.nf-test/*

@@ -24,20 +24,24 @@ nextflow_workflow {
             }
             workflow {
                 """
-                input[0] = [
-                    [ id:'test', single_end:false ], // meta map
-                    file("${projectDir}/modules/local/interproscan/tests/fixtures/test.fasta", checkIfExists: true)
-                ]
-                println(params.interproscan_tar_gz)
-                println(input)
+                input[0] = Channel.of(
+                    [
+                        [ id:'test1', single_end:false ], // meta map
+                        file("${moduleTestDir}/fixtures/test1.fasta", checkIfExists: true)
+                    ],
+                    [
+                        [ id:'test2', single_end:false ], // meta map
+                        file("${moduleTestDir}/fixtures/test2.fasta", checkIfExists: true)
+                    ]
+                )
                 """
         }
         }
 
         then {
             assertAll(
-                { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
+                { assert snapshot(workflow.out).match() }
+                { assert workflow.success },
                 //TODO nf-core: Add all required assertions to verify the test output.
             )
         }
