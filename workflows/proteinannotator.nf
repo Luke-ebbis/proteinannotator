@@ -26,6 +26,19 @@ workflow PROTEINANNOTATOR {
     ch_versions = Channel.empty()
     ch_multiqc_files = Channel.empty()
 
+    // Create a multifasta, with one fasta per entry, add the sequence ID to the meta id
+    ch_fasta
+        .map {
+            meta, fasta ->
+            [
+                [id:"${meta.id}_${fasta[0].splitFasta(record: [id: true]).id[0].replaceAll(/\|/, '-')}"] ,
+                fasta[0].splitFasta(file:true)
+            ]
+        }
+        .transpose()
+        .view()
+        .set { ch_multifasta }
+
     FUNCTIONAL_ANNOTATION (
         ch_samplesheet
     )
@@ -33,6 +46,7 @@ workflow PROTEINANNOTATOR {
     // todo: move this to stats on input fasta subworkflow
     SEQKIT_STATS(ch_samplesheet)
     ch_versions = ch_versions.mix(SEQKIT_STATS.out.versions)
+    ch_versions = ch_versions.mix(FUNCTIONAL_ANNOTATION.out.versions)
 
     //
     // Collate and save software versions

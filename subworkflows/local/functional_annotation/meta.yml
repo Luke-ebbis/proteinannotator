@@ -1,17 +1,46 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
 name: "functional_annotation"
-description: Functional annotation of proteins
+description: "Perform functional annotation of protein sequences"
 keywords:
-  - fasta
+  - annotation
+  - protein
+  - function
+  - domains
+  - hmmer
 components:
+  - hmmer
 input:
-  - ch_fasta:
+  - ch_proteins:
       type: file
       description: |
-        The input channel containing the fasta files
+        Channel containing protein sequences in FASTA format
         Structure: [ val(meta), path(fasta) ]
-      pattern: "*.{fa,fasta,fa.gz,fasta.gz}"
+      pattern: "*.{fasta,fa,faa}"
 output:
+  - hmmer_domtblout:
+      type: file
+      description: |
+        HMMER domain table output
+        Structure: [ val(meta), path(domtblout) ]
+      pattern: "*.domtblout"
+  - hmmer_results:
+      type: file
+      description: |
+        HMMER search results
+        Structure: [ val(meta), path(txt) ]
+      pattern: "*.txt"
+  - hmmer_target_summary:
+      type: file
+      description: |
+        HMMER per-target summary table
+        Structure: [ val(meta), path(tblout) ]
+      pattern: "*.tblout"
+  - hmmer_alignments:
+      type: file
+      description: |
+        HMMER domain alignments (optional)
+        Structure: [ val(meta), path(sto) ]
+      pattern: "*.sto"
   - versions:
       type: file
       description: |
@@ -19,6 +48,6 @@ output:
         Structure: [ path(versions.yml) ]
       pattern: "versions.yml"
 authors:
-  - "@eweizy"
+  - "@snafees"
 maintainers:
-  - "@eweizy"
+  - "@snafees"

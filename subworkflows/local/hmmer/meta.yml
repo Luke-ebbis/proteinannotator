@@ -1,0 +1,71 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
+name: "hmmer"
+## TODO nf-core: Add a description of the subworkflow and list keywords
+description: Prepare HMM database and run HMMER hmmsearch for protein annotation
+keywords:
+  - hmmer
+  - protein
+  - domain
+  - annotation
+  - hmmsearch
+  - hmmpress
+## TODO nf-core: Add a list of the modules and/or subworkflows used in the subworkflow
+components:
+  - hmmer/hmmpress
+  - hmmer/hmmsearch
+## TODO nf-core: List all of the channels used as input with a description and their structure"
+input:
+  - ch_proteins:
+      type: file
+      description: |
+        Channel containing protein sequences in FASTA format to search against HMM database
+        Structure: [ val(meta), path(fasta) ]
+      pattern: "*.{fasta,fa,faa}"
+- ch_hmm_db:
+      type: file
+      description: |
+        Channel containing HMM database file(s) (pressed or unpressed)
+        Structure: [ val(meta), path(hmm) ]
+      pattern: "*.{hmm}"
+## TODO nf-core: List all of the channels used as output with a descriptions and their structure
+output:
+   - pressed_db:
+      type: file
+      description: |
+        Pressed HMM database files ready for searching (includes .h3f, .h3i, .h3m, .h3p files)
+        Structure: [ val(meta), path(hmm), path(h3f), path(h3i), path(h3m), path(h3p) ]
+      pattern: "*.{hmm,h3f,h3i,h3m,h3p}"
+ - search_results:
+      type: file
+      description: |
+        HMMER hmmsearch standard output containing human-readable results
+        Structure: [ val(meta), path(txt) ]
+      pattern: "*.txt"
+  -  domtblout:
+      type: file
+      description: |
+        Domain table output in tab-delimited format (--domtblout)
+        Structure: [ val(meta), path(domtblout) ]
+      pattern: "*.domtblout"
+  - target_summary:
+      type: file
+      description: |
+        Per-target summary table in tab-delimited format (--tblout)
+        Structure: [ val(meta), path(tblout) ]
+      pattern: "*.tblout"
+  - domain_alignments:
+      type: file
+      description: |
+        Domain alignments in Stockholm format (optional)
+        Structure: [ val(meta), path(sto) ]
+      pattern: "*.sto"
+  - versions:
+      type: file
+      description: |
+        File containing software versions
+        Structure: [ path(versions.yml) ]
+      pattern: "versions.yml"
+authors:
+  - "@snafees"
+maintainers:
+  - "@snafees"

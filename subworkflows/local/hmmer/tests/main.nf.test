@@ -1,12 +1,13 @@
 // TODO nf-core: Once you have added the required tests, please run the following command to build this file:
-// nf-core subworkflows test functional_annotation
+// nf-core subworkflows test hmmer
+
 nextflow_workflow {
 
-    name "Test Workflow FUNCTIONAL_ANNOTATION"
+    name "Test Workflow HMMER"
     script "../main.nf"
-    workflow "FUNCTIONAL_ANNOTATION"
+    workflow "HMMER"
 
-    test("Test functional annotation with HMMER") {
+    test("Test HMMER database preparation and search") {
 
         when {
             workflow {
@@ -18,19 +19,27 @@ nextflow_workflow {
                         file("${projectDir}/test-datasets/proteins/test.fasta", checkIfExists: true)
                     ]
                 )
+                
+                // Create test HMM database channel (unpressed)
+                input[1] = Channel.of(
+                    [
+                        [ id:'test_hmm' ],
+                        file("${projectDir}/test-datasets/hmm/test.hmm", checkIfExists: true)
+                    ]
+                )
                 """
-            }
-            params {
-                run_hmmer = true
-                hmm_db = "${projectDir}/test-datasets/hmm/test.hmm"
             }
         }
 
         then {
             assert workflow.success
-            assert workflow.out.hmmer_domtblout
-            assert workflow.out.hmmer_results
+            assert workflow.out.pressed_db
+            assert workflow.out.search_results
+            assert workflow.out.domtblout
             assert workflow.out.versions
         }
     }
 }
+
+
+    
