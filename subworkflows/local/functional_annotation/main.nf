@@ -1,4 +1,4 @@
-// Import Annotator Subworfklows 
+// Import Annotator Subworfklows
 
 workflow FUNCTIONAL_ANNOTATION {
 
