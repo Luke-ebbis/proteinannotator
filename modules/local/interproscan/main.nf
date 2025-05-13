@@ -1,4 +1,4 @@
-process INTERPROSCAN_RUN {
+process INTERPROSCAN {
     scratch true
     tag "$meta.id"
     label 'process_high'

@@ -1,9 +1,9 @@
 
 nextflow_process {
 
-    name "Test Process INTERPROSCAN_RUN"
+    name "Test Process INTERPROSCAN"
     script "../main.nf"
-    process "INTERPROSCAN_RUN"
+    process "INTERPROSCAN"
 
     tag "modules"
     tag "modules_"
