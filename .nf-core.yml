@@ -1,4 +1,5 @@
 lint:
+  files_exist: .github/workflows/ci.yml
   actions_ci: false
   files_unchanged:
     - assets/nf-core-proteinannotator_logo_light.png
