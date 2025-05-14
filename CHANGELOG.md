@@ -9,6 +9,8 @@ Initial release of nf-core/proteinannotator, created with the [nf-core](https://
 
 ### `Added`
 
+- Updated to `nf-test` on GitHub Actions and in the `PULL_REQUEST_TEMPLATE.md`
+
 ### `Fixed`
 
 ### `Dependencies`
