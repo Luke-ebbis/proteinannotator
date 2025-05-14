@@ -20,7 +20,7 @@ input:
       description: |
         Channel containing protein sequences in FASTA format to search against HMM database
         Structure: [ val(meta), path(fasta) ]
-      pattern: "*.{fasta,fa,faa}"
+      pattern: "*.{fasta,fna,fa,faa}"
 - ch_hmm_db:
       type: file
       description: |
@@ -35,7 +35,7 @@ output:
         Pressed HMM database files ready for searching (includes .h3f, .h3i, .h3m, .h3p files)
         Structure: [ val(meta), path(hmm), path(h3f), path(h3i), path(h3m), path(h3p) ]
       pattern: "*.{hmm,h3f,h3i,h3m,h3p}"
- - search_results:
+  - search_results:
       type: file
       description: |
         HMMER hmmsearch standard output containing human-readable results

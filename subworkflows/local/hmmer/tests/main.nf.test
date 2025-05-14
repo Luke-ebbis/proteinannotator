@@ -3,9 +3,9 @@
 
 nextflow_workflow {
 
-    name "Test Workflow HMMER"
+    name "Test Workflow HMMER_ANNOTATION"
     script "../main.nf"
-    workflow "HMMER"
+    workflow "HMMER_ANNOTATION"
 
     test("Test HMMER database preparation and search") {
 
@@ -16,14 +16,14 @@ nextflow_workflow {
                 input[0] = Channel.of(
                     [
                         [ id:'test_protein' ],
-                        file("${projectDir}/test-datasets/proteins/test.fasta", checkIfExists: true)
+                        file("https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/delete_me/hmmer/e_coli_k12_16s.fna.gz", checkIfExists: true)
                     ]
                 )
                 // Create test HMM database channel (unpressed)
                 input[1] = Channel.of(
                     [
                         [ id:'test_hmm' ],
-                        file("${projectDir}/test-datasets/hmm/test.hmm", checkIfExists: true)
+                        file("https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/delete_me/hmmer/bac.16S_rRNA.hmm.gz", checkIfExists: true)
                     ]
                 )
                 """
@@ -33,8 +33,9 @@ nextflow_workflow {
         then {
             assert workflow.success
             assert workflow.out.pressed_db
-            assert workflow.out.search_results
-            assert workflow.out.domtblout
+            assert workflow.out.txt_output
+            assert workflow.out.domain_summary
+            assert workflow.out.target_summary
             assert workflow.out.versions
         }
     }

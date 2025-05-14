@@ -1,0 +1,12 @@
+N E X T F L O W  ~  version 24.04.2
+Launching `/Users/saba.nafees/code/nextflow/proteinannotator/.nf-test-67aaf421e02387adceb68ea1093eea83.nf` [confident_hamilton] DSL2 - revision: b9589f0468
+WARN: Invalid config manifest attribute `contributors`
+WARN: Task runtime metrics are not reported when using macOS without a container engine
+[a8/1988a6] Submitted process > HMMER_ANNOTATION:DECOMPRESS_PROTEINS (test_protein)
+[0c/cca9d6] Submitted process > HMMER_ANNOTATION:DECOMPRESS_HMM (test_hmm)
+WARN: Process `HMMER_ANNOTATION:DECOMPRESS_HMM` publishDir path contains a variable with a null value
+WARN: Process `HMMER_ANNOTATION:DECOMPRESS_PROTEINS` publishDir path contains a variable with a null value
+[12/3df667] Submitted process > HMMER_ANNOTATION:HMMER_HMMPRESS (test_hmm)
+[73/044ac4] Submitted process > HMMER_ANNOTATION:HMMER_HMMSEARCH (test_protein)
+WARN: Process `HMMER_ANNOTATION:HMMER_HMMPRESS` publishDir path contains a variable with a null value
+WARN: Process `HMMER_ANNOTATION:HMMER_HMMSEARCH` publishDir path contains a variable with a null value

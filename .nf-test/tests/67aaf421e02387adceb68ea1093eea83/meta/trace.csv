@@ -1,0 +1,5 @@
+task_id	hash	native_id	name	status	exit	submit	duration	realtime	%cpu	peak_rss	peak_vmem	rchar	wchar
+1	0c/cca9d6	54190	HMMER_ANNOTATION:DECOMPRESS_HMM (test_hmm)	COMPLETED	0	2025-05-14 01:14:52.860	83ms	15ms	-	-	-	-	-
+2	a8/1988a6	54188	HMMER_ANNOTATION:DECOMPRESS_PROTEINS (test_protein)	COMPLETED	0	2025-05-14 01:14:52.854	82ms	16ms	-	-	-	-	-
+3	12/3df667	54228	HMMER_ANNOTATION:HMMER_HMMPRESS (test_hmm)	COMPLETED	0	2025-05-14 01:14:52.969	122ms	53ms	-	-	-	-	-
+4	73/044ac4	54230	HMMER_ANNOTATION:HMMER_HMMSEARCH (test_protein)	COMPLETED	0	2025-05-14 01:14:52.973	186ms	102ms	-	-	-	-	-

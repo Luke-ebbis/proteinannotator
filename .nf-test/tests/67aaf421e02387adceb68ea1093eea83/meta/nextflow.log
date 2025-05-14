@@ -1,0 +1,108 @@
+May-14 01:14:50.910 [main] DEBUG nextflow.cli.Launcher - $> nextflow -log /Users/saba.nafees/code/nextflow/proteinannotator/.nf-test/tests/67aaf421e02387adceb68ea1093eea83/meta/nextflow.log run /Users/saba.nafees/code/nextflow/proteinannotator/.nf-test-67aaf421e02387adceb68ea1093eea83.nf -c /Users/saba.nafees/code/nextflow/proteinannotator/nextflow.config -params-file /Users/saba.nafees/code/nextflow/proteinannotator/.nf-test/tests/67aaf421e02387adceb68ea1093eea83/meta/params.json -ansi-log false -with-trace /Users/saba.nafees/code/nextflow/proteinannotator/.nf-test/tests/67aaf421e02387adceb68ea1093eea83/meta/trace.csv -w /Users/saba.nafees/code/nextflow/proteinannotator/.nf-test/tests/67aaf421e02387adceb68ea1093eea83/work
+May-14 01:14:50.948 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.2
+May-14 01:14:50.960 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/Users/saba.nafees/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
+May-14 01:14:50.966 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+May-14 01:14:50.967 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+May-14 01:14:50.968 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
+May-14 01:14:50.974 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+May-14 01:14:50.985 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /Users/saba.nafees/code/nextflow/proteinannotator/nextflow.config
+May-14 01:14:50.987 [main] DEBUG nextflow.config.ConfigBuilder - User config file: /Users/saba.nafees/code/nextflow/proteinannotator/nextflow.config
+May-14 01:14:50.988 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/saba.nafees/code/nextflow/proteinannotator/nextflow.config
+May-14 01:14:50.988 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/saba.nafees/code/nextflow/proteinannotator/nextflow.config
+May-14 01:14:51.008 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /Users/saba.nafees/.nextflow/secrets/store.json
+May-14 01:14:51.010 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@73aff8f1] - activable => nextflow.secret.LocalSecretsProvider@73aff8f1
+May-14 01:14:51.021 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+May-14 01:14:51.788 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+May-14 01:14:51.981 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+May-14 01:14:51.988 [main] INFO  nextflow.cli.CmdRun - Launching `/Users/saba.nafees/code/nextflow/proteinannotator/.nf-test-67aaf421e02387adceb68ea1093eea83.nf` [confident_hamilton] DSL2 - revision: b9589f0468
+May-14 01:14:51.989 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins declared=[nf-schema@2.2.0]
+May-14 01:14:51.989 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+May-14 01:14:51.989 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[nf-schema@2.2.0]
+May-14 01:14:51.989 [main] DEBUG nextflow.plugin.PluginUpdater - Installing plugin nf-schema version: 2.2.0
+May-14 01:14:51.992 [main] INFO  org.pf4j.AbstractPluginManager - Plugin 'nf-schema@2.2.0' resolved
+May-14 01:14:51.993 [main] INFO  org.pf4j.AbstractPluginManager - Start plugin 'nf-schema@2.2.0'
+May-14 01:14:51.995 [main] DEBUG nextflow.plugin.BasePlugin - Plugin started nf-schema@2.2.0
+May-14 01:14:52.024 [main] DEBUG nextflow.Session - Session UUID: 58ad274a-474b-4ac7-9a94-c1e9bf36c8ad
+May-14 01:14:52.024 [main] DEBUG nextflow.Session - Run name: confident_hamilton
+May-14 01:14:52.024 [main] DEBUG nextflow.Session - Executor pool size: 14
+May-14 01:14:52.027 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+May-14 01:14:52.029 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=42; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+May-14 01:14:52.040 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.2 build 5914
+  Created: 29-05-2024 06:19 UTC (02:19 EDT)
+  System: Mac OS X 15.3.1
+  Runtime: Groovy 4.0.21 on OpenJDK 64-Bit Server VM 17.0.15+0
+  Encoding: UTF-8 (UTF-8)
+  Process: 54157@MacBook-Pro.local [127.0.0.1]
+  CPUs: 14 - Mem: 96 GB (9.8 GB) - Swap: 0 (0)
+May-14 01:14:52.055 [main] DEBUG nextflow.Session - Work-dir: /Users/saba.nafees/code/nextflow/proteinannotator/.nf-test/tests/67aaf421e02387adceb68ea1093eea83/work [Mac OS X]
+May-14 01:14:52.055 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /Users/saba.nafees/code/nextflow/proteinannotator/bin
+May-14 01:14:52.060 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+May-14 01:14:52.065 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+May-14 01:14:52.078 [main] WARN  nextflow.config.Manifest - Invalid config manifest attribute `contributors`
+May-14 01:14:52.090 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+May-14 01:14:52.094 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 15; maxThreads: 1000
+May-14 01:14:52.123 [main] DEBUG nextflow.Session - Session start
+May-14 01:14:52.124 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /Users/saba.nafees/code/nextflow/proteinannotator/.nf-test/tests/67aaf421e02387adceb68ea1093eea83/meta/trace.csv
+May-14 01:14:52.252 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+May-14 01:14:52.569 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+May-14 01:14:52.570 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+May-14 01:14:52.572 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+May-14 01:14:52.574 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=14; memory=96 GB; capacity=14; pollInterval=100ms; dumpInterval=5m
+May-14 01:14:52.576 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+May-14 01:14:52.605 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+May-14 01:14:52.606 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+May-14 01:14:52.611 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name HMMER_ANNOTATION:HMMER_HMMPRESS
+May-14 01:14:52.612 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+May-14 01:14:52.612 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+May-14 01:14:52.632 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name HMMER_ANNOTATION:HMMER_HMMSEARCH
+May-14 01:14:52.634 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+May-14 01:14:52.634 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+May-14 01:14:52.653 [main] DEBUG nextflow.Session - Config process names validation disabled as requested
+May-14 01:14:52.654 [main] DEBUG nextflow.Session - Igniting dataflow network (7)
+May-14 01:14:52.655 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > HMMER_ANNOTATION:DECOMPRESS_HMM
+May-14 01:14:52.655 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > HMMER_ANNOTATION:DECOMPRESS_PROTEINS
+May-14 01:14:52.655 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > HMMER_ANNOTATION:HMMER_HMMPRESS
+May-14 01:14:52.655 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > HMMER_ANNOTATION:HMMER_HMMSEARCH
+May-14 01:14:52.655 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_e7e322f88f35de2e: /Users/saba.nafees/code/nextflow/proteinannotator/.nf-test-67aaf421e02387adceb68ea1093eea83.nf
+  Script_bccdacc34e930bc6: /Users/saba.nafees/code/nextflow/proteinannotator/subworkflows/local/hmmer/tests/../../../../modules/nf-core/hmmer/hmmsearch/main.nf
+  Script_f4a1ea36ac7c6f03: /Users/saba.nafees/code/nextflow/proteinannotator/subworkflows/local/hmmer/tests/../../../../modules/nf-core/hmmer/hmmpress/main.nf
+  Script_21a3e529e694b262: /Users/saba.nafees/code/nextflow/proteinannotator/subworkflows/local/hmmer/tests/../main.nf
+May-14 01:14:52.655 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+May-14 01:14:52.655 [main] DEBUG nextflow.Session - Session await
+May-14 01:14:52.728 [FileTransfer-1] DEBUG nextflow.file.FilePorter - Copying foreign file https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/delete_me/hmmer/e_coli_k12_16s.fna.gz to work dir: /Users/saba.nafees/code/nextflow/proteinannotator/.nf-test/tests/67aaf421e02387adceb68ea1093eea83/work/stage-58ad274a-474b-4ac7-9a94-c1e9bf36c8ad/7c/ba98106efb21d743695f76bf878eea/e_coli_k12_16s.fna.gz
+May-14 01:14:52.728 [FileTransfer-2] DEBUG nextflow.file.FilePorter - Copying foreign file https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/delete_me/hmmer/bac.16S_rRNA.hmm.gz to work dir: /Users/saba.nafees/code/nextflow/proteinannotator/.nf-test/tests/67aaf421e02387adceb68ea1093eea83/work/stage-58ad274a-474b-4ac7-9a94-c1e9bf36c8ad/d9/fc6896eac155200a8ab60b55b99e0e/bac.16S_rRNA.hmm.gz
+May-14 01:14:52.846 [Task submitter] WARN  n.executor.BashWrapperBuilder - Task runtime metrics are not reported when using macOS without a container engine
+May-14 01:14:52.853 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+May-14 01:14:52.854 [Task submitter] INFO  nextflow.Session - [a8/1988a6] Submitted process > HMMER_ANNOTATION:DECOMPRESS_PROTEINS (test_protein)
+May-14 01:14:52.859 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+May-14 01:14:52.860 [Task submitter] INFO  nextflow.Session - [0c/cca9d6] Submitted process > HMMER_ANNOTATION:DECOMPRESS_HMM (test_hmm)
+May-14 01:14:52.938 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: HMMER_ANNOTATION:DECOMPRESS_PROTEINS (test_protein); status: COMPLETED; exit: 0; error: -; workDir: /Users/saba.nafees/code/nextflow/proteinannotator/.nf-test/tests/67aaf421e02387adceb68ea1093eea83/work/a8/1988a6d2e4f887f2a9328a099f23a7]
+May-14 01:14:52.938 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=42; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+May-14 01:14:52.943 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: HMMER_ANNOTATION:DECOMPRESS_HMM (test_hmm); status: COMPLETED; exit: 0; error: -; workDir: /Users/saba.nafees/code/nextflow/proteinannotator/.nf-test/tests/67aaf421e02387adceb68ea1093eea83/work/0c/cca9d6e3102359210f1879d26ac697]
+May-14 01:14:52.963 [TaskFinalizer-2] WARN  nextflow.processor.PublishDir - Process `HMMER_ANNOTATION:DECOMPRESS_HMM` publishDir path contains a variable with a null value
+May-14 01:14:52.963 [TaskFinalizer-1] WARN  nextflow.processor.PublishDir - Process `HMMER_ANNOTATION:DECOMPRESS_PROTEINS` publishDir path contains a variable with a null value
+May-14 01:14:52.967 [TaskFinalizer-2] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=42; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+May-14 01:14:52.969 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+May-14 01:14:52.969 [Task submitter] INFO  nextflow.Session - [12/3df667] Submitted process > HMMER_ANNOTATION:HMMER_HMMPRESS (test_hmm)
+May-14 01:14:52.973 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+May-14 01:14:52.973 [Task submitter] INFO  nextflow.Session - [73/044ac4] Submitted process > HMMER_ANNOTATION:HMMER_HMMSEARCH (test_protein)
+May-14 01:14:53.092 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: HMMER_ANNOTATION:HMMER_HMMPRESS (test_hmm); status: COMPLETED; exit: 0; error: -; workDir: /Users/saba.nafees/code/nextflow/proteinannotator/.nf-test/tests/67aaf421e02387adceb68ea1093eea83/work/12/3df6677fcee297119e730c26d2869d]
+May-14 01:14:53.095 [TaskFinalizer-3] WARN  nextflow.processor.PublishDir - Process `HMMER_ANNOTATION:HMMER_HMMPRESS` publishDir path contains a variable with a null value
+May-14 01:14:53.159 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: HMMER_ANNOTATION:HMMER_HMMSEARCH (test_protein); status: COMPLETED; exit: 0; error: -; workDir: /Users/saba.nafees/code/nextflow/proteinannotator/.nf-test/tests/67aaf421e02387adceb68ea1093eea83/work/73/044ac4d02da6ece722d5d629a93952]
+May-14 01:14:53.163 [TaskFinalizer-4] WARN  nextflow.processor.PublishDir - Process `HMMER_ANNOTATION:HMMER_HMMSEARCH` publishDir path contains a variable with a null value
+May-14 01:14:53.165 [main] DEBUG nextflow.Session - Session await > all processes finished
+May-14 01:14:53.264 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+May-14 01:14:53.264 [main] DEBUG nextflow.Session - Session await > all barriers passed
+May-14 01:14:53.266 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+May-14 01:14:53.266 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+May-14 01:14:53.275 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=4; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=696ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=7; peakMemory=42 GB; ]
+May-14 01:14:53.275 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+May-14 01:14:53.275 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+May-14 01:14:53.774 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+May-14 01:14:53.844 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+May-14 01:14:53.852 [main] INFO  org.pf4j.AbstractPluginManager - Stop plugin 'nf-schema@2.2.0'
+May-14 01:14:53.852 [main] DEBUG nextflow.plugin.BasePlugin - Plugin stopped nf-schema
+May-14 01:14:53.852 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+May-14 01:14:53.852 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
