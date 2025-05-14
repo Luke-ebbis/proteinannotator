@@ -13,14 +13,15 @@ workflow FUNCTIONAL_ANNOTATION {
 
     // Create a multifasta, with one fasta per entry, add the sequence ID to the meta id
     ch_fasta
+        .splitFasta(file: true)
+        .view()
         .map {
             meta, fasta ->
-            [
-                [id:"${meta.id}_${fasta[0].splitFasta(record: [id: true]).id[0].replaceAll(/\|/, '-')}"] ,
-                fasta[0].splitFasta(file:true)
-            ]
+                [
+                    [id: "${meta.id}_${fasta.splitFasta(record: [id: true]).id[0].replaceAll(/\|/, '-')}"],
+                    fasta
+                ]
         }
-        .transpose()
         .view()
         .set { ch_multifasta }
 
@@ -31,5 +32,6 @@ workflow FUNCTIONAL_ANNOTATION {
     emit:
     // TODO nf-core: edit emitted channels
 
-    versions = ch_versions                     // channel: [ versions.yml ]
+    multifasta = ch_multifasta
+    versions   = ch_versions                     // channel: [ versions.yml ]
 }
