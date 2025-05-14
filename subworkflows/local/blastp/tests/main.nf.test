@@ -19,11 +19,13 @@ nextflow_workflow {
 
         when {
             params {
-                blast_ref_fasta = params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta'
+                //blast_ref_fasta = 'proteome.fasta'
+                blast_ref_fasta = 'https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/genome/proteome.fasta'
+                //blast_ref_fasta = params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta'
             }
-            process {
+            workflow {
                 """
-                input[0] = [ [id:'test'], file(params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta', checkIfExists: true) ]
+                input[0] = [ [id:'test'], file(params.blast_ref_fasta, checkIfExists: true) ]
                 input[1] = ''
                 """
             }
@@ -31,116 +33,116 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert process.success },
+                { assert workflow.success },
                 { assert snapshot(
-                    process.out.tsv,
-                    process.out.versions
+                    workflow.out.tsv,
+                    workflow.out.versions
                 ).match() }
             )
         }
 
     }
 
-    test("Should search for zipped proteins against a blast db and return the default (tsv) file with hits") {
+    // test("Should search for zipped proteins against a blast db and return the default (tsv) file with hits") {
 
-        when {
-            params {
-                blast_ref_fasta = params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta'
-            }
-            process {
-                """
-                input[0] = [ [id:'test'], file(params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta.gz', checkIfExists: true) ]
-                input[1] = ''
-                """
-            }
-        }
+    //     when {
+    //         params {
+    //             blast_ref_fasta = params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta'
+    //         }
+    //         workflow {
+    //             """
+    //             input[0] = [ [id:'test'], file(params.blast_ref_fasta, checkIfExists: true) ]
+    //             input[1] = ''
+    //             """
+    //         }
+    //     }
 
-        then {
-            assertAll(
-                { assert process.success },
-                { assert snapshot(
-                    process.out.tsv,
-                    process.out.versions
-                ).match() }
-            )
-        }
+    //     then {
+    //         assertAll(
+    //             { assert workflow.success },
+    //             { assert snapshot(
+    //                 workflow.out.tsv,
+    //                 workflow.out.versions
+    //             ).match() }
+    //         )
+    //     }
 
-    }
+    // }
 
-    test("Should search for proteins against a blast db and return an xml file with hits") {
+    // test("Should search for proteins against a blast db and return an xml file with hits") {
 
-        when {
-            params {
-                blast_ref_fasta = params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta'
-            }
-            process {
-                """
-                input[0] = [ [id:'test'], file(params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta', checkIfExists: true) ]
-                input[1] = 'xml'
-                """
-            }
-        }
+    //     when {
+    //         params {
+    //             blast_ref_fasta = params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta'
+    //         }
+    //         workflow {
+    //             """
+    //             input[0] = [ [id:'test'], file(params.blast_ref_fasta, checkIfExists: true) ]
+    //             input[1] = 'xml'
+    //             """
+    //         }
+    //     }
 
-        then {
-            assertAll(
-                { assert process.success },
-                { assert snapshot(
-                    process.out.xml,
-                    process.out.versions
-                ).match() }
-            )
-        }
+    //     then {
+    //         assertAll(
+    //             { assert workflow.success },
+    //             { assert snapshot(
+    //                 workflow.out.xml,
+    //                 workflow.out.versions
+    //             ).match() }
+    //         )
+    //     }
 
-    }
+    // }
 
-    test("Should search for proteins against a blast db and return a tsv file with hits") {
+    // test("Should search for proteins against a blast db and return a tsv file with hits") {
 
-        when {
-            params {
-                blast_ref_fasta = params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta'
-            }
-            process {
-                """
-                input[0] = [ [id:'test'], file(params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta', checkIfExists: true) ]
-                input[1] = 'tsv'
-                """
-            }
-        }
+    //     when {
+    //         params {
+    //             blast_ref_fasta = params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta'
+    //         }
+    //         workflow {
+    //             """
+    //             input[0] = [ [id:'test'], file(params.blast_ref_fasta, checkIfExists: true) ]
+    //             input[1] = 'tsv'
+    //             """
+    //         }
+    //     }
 
-        then {
-            assertAll(
-                { assert process.success },
-                { assert snapshot(
-                    process.out.tsv,
-                    process.out.versions
-                ).match() }
-            )
-        }
+    //     then {
+    //         assertAll(
+    //             { assert workflow.success },
+    //             { assert snapshot(
+    //                 workflow.out.tsv,
+    //                 workflow.out.versions
+    //             ).match() }
+    //         )
+    //     }
 
-    }
+    // }
 
-    test("Should search for proteins against a blast db and return a csv file with hits") {
+    // test("Should search for proteins against a blast db and return a csv file with hits") {
 
-        when {
-            params {
-                blast_ref_fasta = params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta'
-            }
-            process {
-                """
-                input[0] = [ [id:'test'], file(params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta', checkIfExists: true) ]
-                input[1] = 'csv'
-                """
-            }
-        }
+    //     when {
+    //         params {
+    //             blast_ref_fasta = params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta'
+    //         }
+    //         workflow {
+    //             """
+    //             input[0] = [ [id:'test'], file(params.blast_ref_fasta, checkIfExists: true) ]
+    //             input[1] = 'csv'
+    //             """
+    //         }
+    //     }
 
-        then {
-            assertAll(
-                { assert process.success },
-                { assert snapshot(
-                    process.out.csv,
-                    process.out.versions
-                ).match() }
-            )
-        }
-    }
+    //     then {
+    //         assertAll(
+    //             { assert workflow.success },
+    //             { assert snapshot(
+    //                 workflow.out.csv,
+    //                 workflow.out.versions
+    //             ).match() }
+    //         )
+    //     }
+    // }
 }

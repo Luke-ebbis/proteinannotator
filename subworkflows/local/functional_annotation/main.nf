@@ -30,7 +30,7 @@ workflow FUNCTIONAL_ANNOTATION {
     // SUBWORKFLOW: BLASTP
     //
     BLASTP (
-    ch_multifasta
+    ch_multifasta, params.blastp_outfmt
     )
     ch_versions = ch_versions.mix(BLASTP.out.versions.first())
 
