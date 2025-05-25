@@ -3,13 +3,13 @@
     IMPORT MODULES / SUBWORKFLOWS / FUNCTIONS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
-include { MULTIQC                } from '../modules/nf-core/multiqc/main'
-include { SEQKIT_STATS           } from '../modules/nf-core/seqkit/stats/main'
-include { paramsSummaryMap       } from 'plugin/nf-schema'
-include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
+include { MULTIQC } from '../modules/nf-core/multiqc/main'
+include { SEQKIT_STATS } from '../modules/nf-core/seqkit/stats/main'
+include { paramsSummaryMap } from 'plugin/nf-schema'
+include { paramsSummaryMultiqc } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_proteinannotator_pipeline'
-include { FUNCTIONAL_ANNOTATION  } from '../subworkflows/local/functional_annotation'
+include { FUNCTIONAL_ANNOTATION } from '../subworkflows/local/functional_annotation'
 include { MMSEQS_SEARCH } from '../modules/nf-core/mmseqs/search/main'
 include { MTMALIGN_ALIGN } from '../modules/nf-core/mtmalign/align/main'
 /*
@@ -29,22 +29,15 @@ workflow PROTEINANNOTATOR {
 
     ch_samplesheet.view()
 
-    FUNCTIONAL_ANNOTATION (
+    FUNCTIONAL_ANNOTATION(
         ch_samplesheet
-    
-    //
-    // MODULE: Run InterProScan
-    //
-    INTERPROSCAN (
-        ch_samplesheet, 
-        [file(params.interproscan_database, checkIfExists: true), params.interproscan_database_version],
     )
+
 
     // todo: move this to stats on input fasta subworkflow
     SEQKIT_STATS(ch_samplesheet)
     ch_versions = ch_versions.mix(SEQKIT_STATS.out.versions)
-    ch_multiqc_files = ch_multiqc_files.mix(INTERPROSCAN.out.zip.collect{it[1]})
-    ch_versions = ch_versions.mix(INTERPROSCAN.out.versions.first())
+    ch_versions = ch_versions.mix(FUNCTIONAL_ANNOTATION.out.versions.first())
 
     //
     // Collate and save software versions
@@ -54,8 +47,9 @@ workflow PROTEINANNOTATOR {
             storeDir: "${params.outdir}/pipeline_info",
             name: 'nf_core_' + 'proteinannotator_software_' + 'mqc_' + 'versions.yml',
             sort: true,
-            newLine: true
-        ).set { ch_collated_versions }
+            newLine: true,
+        )
+        .set { ch_collated_versions }
 
     //
     // MODULE: MultiQC
