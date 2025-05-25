@@ -32,7 +32,10 @@
 <!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->
 1. Functional Annotation
   1. ([`InterProScan`](https://interproscan-docs.readthedocs.io/en/v5/)) a software tool used to analyze protein sequences by scanning them against the signatures of protein families, domains, and sites in the [InterPro](https://www.ebi.ac.uk/interpro/) database, helping to identify their functional characteristics.
+1. Run ([`seqkit stats`](https://bioinf.shenwei.me/seqkit/usage/#stats)) to summarize input protein fasta files
 2. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
+
+![Protein annotator metromap. Protein fasta files are summarized with `seqkit stats`, then functionally annotated with InterProScan, DIAMOND-blastp, UniFire, and Kmerseek](assets/proteinannotator-metromap.excalidraw.png)
 
 ## Usage
 
