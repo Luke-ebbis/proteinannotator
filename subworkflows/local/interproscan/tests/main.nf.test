@@ -14,13 +14,13 @@ nextflow_workflow {
     tag "untar"
 
 
-    // TODO nf-core: Change the test name preferably indicating the test-data and file-format used
     test("interproscan -- input: tar.gz, untar") {
 
         when {
             params {
                 interproscan_tar_gz = "${moduleTestDir}/fixtures/interproscan-5.73-104.0.tar.gz"
                 interproscan_database_version = "interproscan-5.73-104.0"
+                outdir = "results/"
             }
             workflow {
                 """
@@ -43,6 +43,51 @@ nextflow_workflow {
                 { assert snapshot(workflow.out).match() }
                 { assert workflow.success },
                 //TODO nf-core: Add all required assertions to verify the test output.
+            )
+        }
+    }
+
+    test("interproscan -- input: tar.gz, untar -- stub") {
+        tag "stub"
+        tag "CI"
+        options "-stub"
+
+        when {
+            params {
+                interproscan_tar_gz = "${moduleTestDir}/fixtures/interproscan-5.73-104.0.tar.gz"
+                interproscan_database_version = "interproscan-5.73-104.0"
+                outdir = "results/"
+            }
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test1', single_end:false ], // meta map
+                        file("${moduleTestDir}/fixtures/test1.fasta", checkIfExists: true)
+                    ],
+                    [
+                        [ id:'test2', single_end:false ], // meta map
+                        file("${moduleTestDir}/fixtures/test2.fasta", checkIfExists: true)
+                    ]
+                )
+                """
+        }
+        }
+
+        then {
+            println "Number of output channels: ${workflow.out.size()}"
+            assertAll(
+                { assert workflow.success },
+                // Warning: all of the outputs MUST be in the same order as the emit: "directive(?)"
+                // We chose alphabetical sorting except for versions because you gotta pick some ordering
+                { assert snapshot(
+                    workflow.out.gff3,
+                    workflow.out.json,
+                    workflow.out.tsv,
+                    workflow.out.xml,
+                    workflow.out.versions
+                    ).match()
+                }
             )
         }
     }

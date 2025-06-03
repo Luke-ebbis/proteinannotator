@@ -41,9 +41,9 @@ workflow INTERPROSCAN {
     ch_versions = ch_versions.mix(INTERPROSCAN_RUN.out.versions.first())
 
     emit:
-    tsv = INTERPROSCAN_RUN.out.tsv // channel: [ val(meta), [ tsv ] ]
-    xml = INTERPROSCAN_RUN.out.xml // channel: [ val(meta), [ xml ] ]
     gff3 = INTERPROSCAN_RUN.out.gff3 // channel: [ val(meta), [ gff3 ] ]
     json = INTERPROSCAN_RUN.out.json // channel: [ val(meta), [ json ] ]
+    tsv = INTERPROSCAN_RUN.out.tsv // channel: [ val(meta), [ tsv ] ]
+    xml = INTERPROSCAN_RUN.out.xml // channel: [ val(meta), [ xml ] ]
     versions = ch_versions // channel: [ versions.yml ]
 }
