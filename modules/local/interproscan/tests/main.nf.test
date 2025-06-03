@@ -42,6 +42,7 @@ nextflow_process {
 
     test("stub") {
         tag "stub"
+        tag "CI"
         options "-stub"
 
         when {
