@@ -56,7 +56,7 @@
                 },
                 "interproscan_tar_gz": {
                     "type": "string",
-                    "default": "http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.74.105/interproscan-5.74.105-64-bit.tar.gz",
+                    "default": "https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.74-105.0/interproscan-5.74-105.0-64-bit.tar.gz",
                     "description": "Tar.gz file exactly from InterProScan https://www.ebi.ac.uk/interpro/download/InterProScan/"
                 },
                 "interproscan_database": {
