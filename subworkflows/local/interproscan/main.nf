@@ -15,10 +15,6 @@ workflow INTERPROSCAN {
 
     ch_versions = Channel.empty()
 
-    if (!params.interproscan_database_version) {
-        error("--interproscan_database_version must be provided! Exiting.")
-    }
-
     if (params.interproscan_tar_gz) {
         interproscan_compressed = [
             [id: params.interproscan_database_version],
