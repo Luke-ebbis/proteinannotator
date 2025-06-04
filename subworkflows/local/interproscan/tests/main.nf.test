@@ -49,6 +49,8 @@ nextflow_workflow {
 
     test("interproscan -- input: tar.gz, untar -- stub") {
         tag "stub"
+
+        // Run this test in the GitHub Actions Continuous Integration (CI), instead of the other one
         tag "CI"
         options "-stub"
 
