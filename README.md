@@ -20,7 +20,7 @@
 
 ## Introduction
 
-**nf-core/proteinannotator** is a bioinformatics pipeline that ...
+**nf-core/proteinannotator** is a bioinformatics pipeline that runs statistics of input protein fasta files and identifies the function of proteins based on their sequence data, using state-of-the-art protein annotation tools such as [InterProScan](https://interproscan-docs.readthedocs.io/).
 
 <!-- TODO nf-core:
    Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the
