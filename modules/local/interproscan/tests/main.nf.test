@@ -14,9 +14,6 @@ nextflow_process {
     test("test_interproscan") {
 
         when {
-            params {
-                run_interproscan = true
-            }
 
             process {
                 """
@@ -46,9 +43,6 @@ nextflow_process {
         options "-stub"
 
         when {
-            params {
-                run_interproscan = true
-            }
 
             process {
                 """

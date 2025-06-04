@@ -49,7 +49,7 @@
             "description": "Options for best-practices domain annotation tool from EBI, InterProScan",
             "default": "",
             "properties": {
-                "run_interproscan": {
+                "skip_interproscan": {
                     "type": "boolean",
                     "description": "Run InterProScan",
                     "default": false
@@ -67,10 +67,6 @@
                 "interproscan_database_version": {
                     "type": "string",
                     "description": "Version number of the InterProScan database, e.g. \"5.73-104.0\""
-                },
-                "skip_interproscan_database_setup": {
-                    "type": "boolean",
-                    "description": "If provided, skip running interproscan_setup.py, which runs `hmmpress` on HMM profiles. If you are using InterProScan data fresh off the FTP server, you will need to do this"
                 }
             }
         },

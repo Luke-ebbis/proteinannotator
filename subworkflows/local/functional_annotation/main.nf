@@ -27,10 +27,12 @@ workflow FUNCTIONAL_ANNOTATION {
     // SUBWORKFLOW: Run InterProScan
     //
 
-    INTERPROSCAN(
-        ch_multifasta
-    )
-    ch_versions = ch_versions.mix(INTERPROSCAN.out.versions.first())
+    if (!params.skip_interproscan) {
+        INTERPROSCAN(
+            ch_multifasta
+        )
+        ch_versions = ch_versions.mix(INTERPROSCAN.out.versions.first())
+    }
 
     emit:
     versions = ch_versions // channel: [ versions.yml ]
