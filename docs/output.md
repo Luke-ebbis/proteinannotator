@@ -12,18 +12,23 @@ The directories listed below will be created in the results directory after the 
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
+
 - [Functional Annotation](#functional-annotation) Annotate proteins with functional domains
   - [InterProScan](#Interproscan) - Search the InterPro database for functional domains
+- [Functional Annotation](#functional-annotation)
+  - [UniFIRE] (#unifire) - Run UniProt's official UniFIRE workflow for protein function prediction
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [SeqKit stats](#seqkit_stats) - Simple statistics for protein FASTA files
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
 
 ### Functional Annotation
 
+
 #### InterProScan
 
 <details markdown="1">
 <summary>Output files</summary>
+
 
 - `functional_annotation/interproscan`
   - `*.gff.gz`: gzip-compressed general feature format (GFF) file
@@ -266,7 +271,19 @@ The XML Schema Definition (XSD) is available [here](http://ftp.ebi.ac.uk/pub/sof
 </protein-matches>
 ```
 
+#### UniFIRE
+
+- `unifire/`
+  - `predictions_arba.out`: a file containing predictions from the Arba method.
+  - `predictions_unirule.out`: a file containing predictions from the Unirule method.
+  - `mpredictions_unirule-pirsr.out`: a file containing predictions from the Pirsr method.
+
 </details>
+
+
+
+[UniFIRE](https://gitlab.ebi.ac.uk/uniprot-public/unifire) (The UniProt Functional annotation Inference Rule Engine) is an engine to execute rules in the UniProt Rule Markup Language (URML) format. It can be used to execute the UniProt annotation rules (UniRule and ARBA).
+
 
 ### MultiQC
 

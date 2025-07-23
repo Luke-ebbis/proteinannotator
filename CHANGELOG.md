@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release of nf-core/proteinannotator, created with the [nf-core](https://nf-co.re/) template.
 
+### Credits
+
+Special thanks to the following for their contributions to the release:
+
+- [Tien Ly](https://github.com/tntly)
+
 ### `Added`
 
 - [[PR #52](https://github.com/nf-core/proteinannotator/pull/52)] Add option to turn off InterProScan for testing
@@ -16,6 +22,8 @@ Initial release of nf-core/proteinannotator, created with the [nf-core](https://
 - [[PR #42](https://github.com/nf-core/proteinannotator/pull/42)] Updated to `nf-test` on GitHub Actions and in the `PULL_REQUEST_TEMPLATE.md`
 - [[PR #13](https://github.com/nf-core/proteinannotator/pull/13)] Add nf-core seqkit/stats module
 - [[PR #9](https://github.com/nf-core/proteinannotator/pull/9)] Add [InterProScan](https://interproscan-docs.readthedocs.io/) module
+- [[PR #17](https://github.com/nf-core/proteinannotator/pull/17)] Added Unifire module
+
 
 ### `Fixed`
 
