@@ -10,6 +10,7 @@
 
 ## Pipeline tools
 
+
 - [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
 
 > Andrews, S. (2010). FastQC: A Quality Control Tool for High Throughput Sequence Data [Online].
@@ -22,6 +23,18 @@
 - [MultiQC](https://pubmed.ncbi.nlm.nih.gov/27312411/)
 
 > Ewels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics. 2016 Oct 1;32(19):3047-8. doi: 10.1093/bioinformatics/btw354. Epub 2016 Jun 16. PubMed PMID: 27312411; PubMed Central PMCID: PMC5039924.
+
+- [InterProScan](https://academic.oup.com/bioinformatics/article/17/9/847/206564)
+
+> Zdobnov, Evgeni M., and Rolf Apweiler. “InterProScan – an Integration Platform for the Signature-Recognition Methods in InterPro.” Bioinformatics 17, no. 9 (September 1, 2001): 847–48. https://doi.org/10.1093/bioinformatics/17.9.847.
+
+- [MMseqs2](https://www.nature.com/articles/nbt.3988)
+
+> Zdobnov, Evgeni M., and Rolf Apweiler. “InterProScan – an Integration Platform for the Signature-Recognition Methods in InterPro.” Bioinformatics 17, no. 9 (September 1, 2001): 847–48. https://doi.org/10.1093/bioinformatics/17.9.847.
+
+- [mTM-align](https://academic.oup.com/bioinformatics/article/34/10/1719/4769500)
+
+> Dong, Runze, Zhenling Peng, Yang Zhang, and Jianyi Yang. “mTM-Align: An Algorithm for Fast and Accurate Multiple Protein Structure Alignment.” Bioinformatics 34, no. 10 (May 15, 2018): 1719–25. https://doi.org/10.1093/bioinformatics/btx828.
 
 ## Software packaging/containerisation tools
 
